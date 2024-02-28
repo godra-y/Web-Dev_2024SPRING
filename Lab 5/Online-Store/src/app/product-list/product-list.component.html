@@ -1,0 +1,55 @@
+<div class="category">
+  <button (click)="filterByCategory('All')" class="categoryBtn">All</button>
+  <button (click)="filterByCategory('Phones, gadgets')" class="categoryBtn">Phones and Gadgets</button>
+  <button (click)="filterByCategory('Beauty and health')" class="categoryBtn">Beauty and Health</button>
+  <button (click)="filterByCategory('Computers')" class="categoryBtn">Computers</button>
+  <button (click)="filterByCategory('Appliances')" class="categoryBtn">Appliances</button>
+</div>
+
+<div *ngFor="let product of categoryItems" class = "products">
+  <h3>
+    <a [title]="product.name + ' details'"
+       [routerLink]="['/products', product.id]">
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <button type="button" (click)="link(product.url)" class="img">
+    <img [src] = "product.img">
+  </button>
+
+  <div class="line"></div>
+
+  <p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>
+
+  <div class="icons">
+    <p *ngIf="product.rating">
+      Rating: {{ product.rating }}
+    </p>
+
+    <button type="button" (click)="likeProduct(product)" class="like">
+      <span><strong>♡</strong></span>
+      <span>{{ product.likes }}</span>
+    </button>
+
+    <button type="button" (click)="deleteProduct(product.id)" class="delete">
+      <img src="assets/trash.png" width="19">
+    </button>
+  </div>
+
+  <p *ngIf="product.price">
+    Cost: {{ product.price | currency  }}
+  </p>
+
+  <button type="button" (click)="share(product.url)">
+    Share
+  </button>
+
+  <app-product-alerts
+    [product]="product"
+    (notify)="onNotify()">
+  </app-product-alerts>
+</div>
+
