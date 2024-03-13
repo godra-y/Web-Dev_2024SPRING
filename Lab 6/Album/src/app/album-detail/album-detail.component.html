@@ -1,0 +1,18 @@
+<button type="button" (click)="back()">back</button>
+
+<div *ngIf="loaded" class="detail-page">
+  <h1>Album detail</h1>
+
+  <h2>#{{post.id}} {{post.title}}</h2>
+
+  <a routerLink="/albums/{{post.id}}/photos">
+    Photo
+  </a>
+
+  <fieldset>
+    <input [(ngModel)]="newTitle" type="text"/>
+    <button (click)="updateTitle()">Save</button>
+  </fieldset>
+</div>
+
+<h3 *ngIf="!loaded">Post is loading...</h3>

@@ -1,0 +1,30 @@
+fieldset {
+  border: none;
+}
+
+input {
+  padding: 1em;
+  width: 300px;
+  height: 10px;
+  border: 1px solid rgb(223, 223, 223);
+  border-radius: 3px;
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  margin-left: 10px;
+  width: 50px;
+  height: 35px;
+  border-radius: 3px;
+  border: none;
+  font-size: 13px;
+  background-color: #cecece;
+  flex-direction: row;
+}
+
+button:hover {
+  background-color: #e8e6e6;
+}
