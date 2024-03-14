@@ -1,43 +1,36 @@
 import {Component, OnInit} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import { Photos } from "../models";
 import { AlbumService } from "../albums.service";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-album-photos',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink,
+    NgForOf
+  ],
   templateUrl: './album-photos.component.html',
   styleUrl: './album-photos.component.css'
 })
 export class AlbumPhotosComponent implements OnInit{
-  album: Photos;
-  loaded: boolean;
   gallery: Photos[];
+  id: number;
 
-  constructor(private route: ActivatedRoute, private postService: AlbumService) {
-    this.album = {} as Photos;
-    this.loaded = true;
+  constructor(private route: ActivatedRoute, private albumService: AlbumService) {
     this.gallery = [];
+    this.id = 0;
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      let _id = params.get('id');
-      if (_id) {
-        let id = +_id;
-        this.getPhoto(id);
-      }
-    });
-  }
-
-
-  getPhoto(id: number): void {
-    this.loaded = false;
-    this.postService.getPhoto(id).subscribe((album) =>{
-      this.gallery = album as Photos[];
-      this.loaded = true;
+      const id = Number(params.get('id'));
+      this.albumService.getPhoto(id).subscribe((photo) => {
+        this.gallery = photo;
+      })
     })
   }
 }
+
 

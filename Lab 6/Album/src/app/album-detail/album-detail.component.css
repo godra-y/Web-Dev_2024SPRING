@@ -1,8 +1,14 @@
+.page-func {
+  display: flex;
+  flex-direction: row;
+}
+
 fieldset {
   border: none;
 }
 
 input {
+  margin-left: 35px;
   padding: 1em;
   width: 300px;
   height: 10px;
@@ -15,16 +21,20 @@ input:focus {
 }
 
 button {
-  margin-left: 10px;
   width: 50px;
   height: 35px;
   border-radius: 3px;
   border: none;
   font-size: 13px;
-  background-color: #cecece;
   flex-direction: row;
+  background-color: white;
 }
 
-button:hover {
-  background-color: #e8e6e6;
+.save-btn {
+  margin-left: 10px;
+  background-color: #cecece;
+}
+
+.save-btn:hover {
+  background-color: #b7b7b7;
 }

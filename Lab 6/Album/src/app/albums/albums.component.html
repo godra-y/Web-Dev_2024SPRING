@@ -1,8 +1,12 @@
-<h2>Albums list</h2>
+<button routerLink="/home" class="back-btn">
+  <img src="https://cdn-icons-png.flaticon.com/512/3114/3114883.png" alt="Back" width="30px" >
+</button>
+
+<h1>Albums list</h1>
 
 <fieldset>
   <input type="text" [(ngModel)]="newAlbum.title">
-  <button (click)="addAlbum()">Add</button>
+  <button (click)="addAlbum()" class="add-btn">Add</button>
 </fieldset>
 
 <ul *ngIf="loaded">
@@ -10,7 +14,10 @@
     <a routerLink="/albums/{{post.id}}">
       {{post.id}}) {{post.title}}
     </a>
-    <button (click)="deleteAlbum(post.id)">Delete</button>
+
+    <button (click)="deleteAlbum(post.id)" class="delete-btn" >
+      <img src="https://cdn-icons-png.flaticon.com/512/5675/5675840.png" alt="Trash" width="23px" >
+    </button>
   </p>
 </ul>
 

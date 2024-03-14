@@ -1,18 +1,21 @@
-<button type="button" (click)="back()">back</button>
+<button routerLink="/albums">
+  <img src="https://cdn-icons-png.flaticon.com/512/3114/3114883.png" alt="Back" width="30px" >
+</button>
 
 <div *ngIf="loaded" class="detail-page">
   <h1>Album detail</h1>
+  <h2>№{{post.id}} {{post.title}}</h2>
 
-  <h2>#{{post.id}} {{post.title}}</h2>
+  <div class="page-func">
+    <button routerLink="/albums/{{post.id}}/photos">
+      <img src="https://static.thenounproject.com/png/4074782-200.png" alt="Photo" width="43px">
+    </button>
 
-  <a routerLink="/albums/{{post.id}}/photos">
-    Photo
-  </a>
-
-  <fieldset>
-    <input [(ngModel)]="newTitle" type="text"/>
-    <button (click)="updateTitle()">Save</button>
-  </fieldset>
+    <fieldset>
+      <input [(ngModel)]="newTitle" type="text"/>
+      <button (click)="updateTitle()" class="save-btn">Save</button>
+    </fieldset>
+  </div>
 </div>
 
 <h3 *ngIf="!loaded">Post is loading...</h3>

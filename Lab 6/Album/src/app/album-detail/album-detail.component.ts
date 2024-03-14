@@ -16,7 +16,7 @@ import {FormsModule} from "@angular/forms";
   templateUrl: './album-detail.component.html',
   styleUrl: './album-detail.component.css'
 })
-export class AlbumDetailComponent implements OnInit{
+export class AlbumDetailComponent implements OnInit {
   post: Album;
   loaded: boolean;
   newTitle: string;
@@ -30,14 +30,13 @@ export class AlbumDetailComponent implements OnInit{
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      let _id = params.get('id');
-      if (_id) {
-        let id = +_id;
+      if (params.get('id')) {
+        const postId = Number(params.get('id'));
         this.loaded = false;
-        this.albumService.getAlbum(id).subscribe((post) => {
+        this.albumService.getAlbum(postId).subscribe((post) => {
           this.post = post;
           this.loaded = true;
-        })
+        });
       }
     });
   }
@@ -47,9 +46,5 @@ export class AlbumDetailComponent implements OnInit{
       this.post.title = response.title;
       this.newTitle = "";
     })
-  }
-
-  back() {
-    window.location.href = "http://localhost:4200/albums";
   }
 }

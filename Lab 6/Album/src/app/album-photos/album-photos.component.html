@@ -1,5 +1,6 @@
-<ul *ngIf="loaded">
-  <li *ngFor="let picture of gallery">
-    <img src="{{ picture.url }}" alt="picture">
+<h1>Album photos</h1>
+<ul>
+  <li *ngFor="let photo of gallery">
+    <img src="{{ photo.url }}">
   </li>
 </ul>
